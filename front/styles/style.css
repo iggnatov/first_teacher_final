@@ -1,0 +1,26 @@
+.criteriaValue {
+    font-weight: bold;
+    font-size: 18px;
+    color: blue;
+}
+
+#main-body {
+    width: 90%;
+    padding: auto 10px 10px auto;
+}
+
+.btn,
+.card-body {
+    width: 100%;
+}
+
+hr {
+    color: gray;
+}
+
+.result {
+    text-align: right;
+    font-weight: bold;
+    font-size: 18px;
+    color: blue;
+}
