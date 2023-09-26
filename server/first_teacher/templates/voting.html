@@ -36,19 +36,21 @@
             <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
                 <!-- Критерии оценивания -->
                 <div class="accordion-body" id="criterias">
+                    <p>Суммарный балл: <span :id="'pre-result' + participant.id">0</span></p>
                     <div v-for="criteria in criterias">
                         <div class="row">
                             <div class="col-8">
-                                {{ criteria.description }} 
+                                <p>{{ criteria.description }}</p>
                             </div>
                             <div class="col">
-                                <p><span class="criteriaValue">5</span></p>
+                                <p class="criteriaValue">5</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="container">
-                                    <input type="range" class="form-range" min="0" max="10" step="1" :id="'criteria' + criteria.id">
+                                    <input type="range" class="form-range" min="0" max="10" step="1"
+                                        :id="'criteria' + '-' + participant.id + '-' + criteria.id">
                                 </div>
                             </div>
                         </div>

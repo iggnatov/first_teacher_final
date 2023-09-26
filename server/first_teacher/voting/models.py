@@ -50,12 +50,12 @@ class Voting(models.Model):
         # to_field='last_name',
         on_delete=models.CASCADE,
     )
-    criteria = models.ForeignKey(
-        Criteria,
-        to_field='description',
-        on_delete=models.CASCADE,
-    )
+    # criteria = models.ForeignKey(
+    #     Criteria,
+    #     to_field='description',
+    #     on_delete=models.CASCADE,
+    # )
     score = models.SmallIntegerField(blank=True, default=0)
 
     def __str__(self):
-        return f'{self.judge} - {self.participant} - {self.criteria} - {self.score}'
+        return f'{self.judge} - {self.participant} - {self.score}'

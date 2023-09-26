@@ -1,7 +1,9 @@
 .criteriaValue {
-    font-weight: bold;
+    /* font-weight: bold;
     font-size: 18px;
-    color: blue;
+    color: blue; */
+    text-align: right;
+    padding-right: 10px;
 }
 
 #main-body {

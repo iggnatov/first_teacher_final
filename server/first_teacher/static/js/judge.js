@@ -21,38 +21,23 @@ var judgeApp = new Vue({
                     el: '#participants',
                     data: {
                         participants: [],
+                        criterias: [],
                     },
                     created: function () {
                         const vp = this;
                         axios.get('/participants?' + 'group_number=' + groupNumber)
                             .then(function (response) {
                                 vp.participants = response.data;
-                                console.log(response.data); 
+                                console.log(response.data);
+
+                                axios.get('/criterias?' + 'tour=1')
+                                    .then(function (response) {
+                                        vp.criterias = response.data;
+                                        console.log(response.data);
+                                    })
                             })
                     }
                 });
             })
     }
 });
-
-// var criteriaApp = new Vue({
-//     el: '#criterias',
-//     data: {
-//         criterias: [],
-//     },
-//     created: function () {
-//         const vc = this;
-//         axios.get('/criterias?' + 'tour=1')
-//             .then(function (response) {
-//                 vc.criterias = response.data;
-//                 console.log(response.data);
-//             })
-//     }
-// });
-
-
-
-
-
-
-

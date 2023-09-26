@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from voting.models import Participant, Judge, Criteria
+from voting.models import Participant, Judge, Criteria, Voting
 
 
 class ParticipantAdminSerializer(serializers.ModelSerializer):
@@ -27,3 +27,8 @@ class CriteriaSerializer(serializers.ModelSerializer):
         model = Criteria
         fields = '__all__'
 
+
+class VotingSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Voting
+        fields = '__all__'

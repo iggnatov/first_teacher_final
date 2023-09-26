@@ -2,11 +2,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from voting.models import Participant, Judge
-from voting.serializers import ParticipantSerializer, ParticipantAdminSerializer
-
-from voting.models import Criteria
-from voting.serializers import CriteriaSerializer
+from voting.models import Participant, Judge, Voting, Criteria
+from voting.serializers import ParticipantSerializer, ParticipantAdminSerializer, VotingSerializer, CriteriaSerializer
 
 
 def show_participants(request):
@@ -37,3 +34,10 @@ class CriteriaView(APIView):
         serializer = CriteriaSerializer(criterias, many=True)
         return Response(serializer.data)
 
+
+class VotingView(APIView):
+    def get(self, request):
+        # tour = request.query_params['tour']
+        votings = Voting.objects.all()
+        serializer = VotingSerializer(votings, many=True)
+        return Response(serializer.data)
