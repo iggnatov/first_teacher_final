@@ -37,7 +37,38 @@ class CriteriaView(APIView):
 
 class VotingView(APIView):
     def get(self, request):
-        # tour = request.query_params['tour']
-        votings = Voting.objects.all()
+        jid = request.query_params['jid']
+        j = Judge.objects.get(code_for_link=jid)
+
+        votings = Voting.objects.filter(judge=j)
         serializer = VotingSerializer(votings, many=True)
         return Response(serializer.data)
+
+
+# admin views
+
+
+def help_admin(request):
+    return render(request, "help_admin.html")
+
+
+class SetAdminVotesView(APIView):
+    def get(self, request):
+        print('start')
+
+        judges = Judge.objects.all()
+        participants = Participant.objects.all()
+
+        for judge in judges:
+            for participant in participants:
+                if participant.group_number == judge.group_number:
+                    print(judge.pk, participant.pk, 0)
+                    j = judges.get(pk=judge.pk)
+                    p = participants.get(pk=participant.pk)
+                    Voting.objects.create(judge=j, participant=p, score=0)
+
+        start_score = Voting.objects.all()
+        serializer = VotingSerializer(start_score, many=True)
+        return Response(serializer.data)
+
+

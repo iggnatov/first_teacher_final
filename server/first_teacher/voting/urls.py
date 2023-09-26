@@ -1,6 +1,7 @@
 from django.urls import path, re_path
 
-from voting.views import ParticipantView, JudgeView, show_participants, CriteriaView, VotingView
+from voting.views import ParticipantView, JudgeView, show_participants, CriteriaView, VotingView, SetAdminVotesView, \
+    help_admin
 
 urlpatterns = [
     re_path('voting+', show_participants),
@@ -8,4 +9,7 @@ urlpatterns = [
     re_path('judge+', JudgeView.as_view()),
     re_path('criterias+', CriteriaView.as_view()),
     re_path('get_votes+', VotingView.as_view()),
+
+    re_path('help_admin+', help_admin),
+    re_path('set_admin_votes', SetAdminVotesView.as_view()),
 ]
