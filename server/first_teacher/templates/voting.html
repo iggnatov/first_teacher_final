@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% verbatim %}
+
+<!-- ШАПКА ПРОТОКОЛА  -->
+<div class="container" id="judgedata">
+    <h4>Всероссийский профессиональный конкурс "Первый учитель"</h4>
+    <p>Финальный этап. Первый тур.
+        <br>Конкурсное испытание: "Открытый урок".
+    </p>
+    <p>Член жюри: {{ judge.last_name }} {{ judge.first_name }} {{ judge.father_name }}
+        <br>Группа № {{ judge.group_number }}
+    </p>
+</div>
+<!-- / ШАПКА ПРОТОКОЛА  -->
+
+<!-- УЧАСТНИКИ -->
+<div class="container" id="participants">
+
+    <div class="accordion accordion-flush" id="accordionFlush" v-for="participant in participants">
+
+        <!-- Участник № 1 -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    {{ participant.last_name }} {{ participant.first_name }} {{ participant.father_name }}
+                    <br>{{ participant.region }}, {{ participant.city }}
+                    <br>Тема урока: {{ participant.chosen_topic }}
+                    <br>Итоговый балл: 0
+                </button>
+            </h2>
+            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlush">
+                <div class="accordion-body">
+
+                    <div class="row">
+                        <div class="col-8">
+                            Критерий 1 Критерий 1 Критерий 1 Критерий 1 Критерий 1 Критерий 1
+                        </div>
+                        <div class="col">
+                            <p><span class="criteriaValue" id="valueCriteria11">5</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <input type="range" class="form-range" min="0" max="10" step="1" id="criteria11">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            Критерий 2 Критерий 2 Критерий 2 Критерий 2 Критерий 2 Критерий 2
+                        </div>
+                        <div class="col">
+                            <p><span class="criteriaValue" id="valueCriteria12">5</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <input type="range" class="form-range" min="0" max="10" step="1" id="criteria12">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            Критерий 3 Критерий 3 Критерий 3 Критерий 3 Критерий 3 Критерий 3
+                        </div>
+                        <div class="col">
+                            <p><span class="criteriaValue" id="valueCriteria13">5</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <input type="range" class="form-range" min="0" max="10" step="1" id="criteria13">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            Критерий 4 Критерий 4 Критерий 4 Критерий 4 Критерий 4 Критерий 4
+                        </div>
+                        <div class="col">
+                            <p><span class="criteriaValue" id="valueCriteria14">5</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <input type="range" class="form-range" min="0" max="10" step="1" id="criteria14">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8">
+                            Критерий 5 Критерий 5 Критерий 5
+                        </div>
+                        <div class="col">
+                            <p><span class="criteriaValue" id="valueCriteria15">5</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="container">
+                                <input type="range" class="form-range" min="0" max="10" step="1" id="criteria15">
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="container">
+                        <button type="button" class="btn btn-secondary">Сохранить</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- / УЧАСТНИКИ  -->
+
+
+{% endverbatim %}
+
+<script src="/static/js/judge.js"></script>
+{% endblock content %}

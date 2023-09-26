@@ -1,2 +1,8 @@
 /server/venv/
 /previous_results.xlsx
+.idea/
+/server/first_teacher/db.sqlite3
+/Рассылка_Оргкомитет_Первый_учитель.doc
+/criteria.csv
+/judges.csv
+/participants.csv

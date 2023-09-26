@@ -12,7 +12,7 @@ class ParticipantAdminSerializer(serializers.ModelSerializer):
 class ParticipantSerializer(serializers.ModelSerializer):
     class Meta:
         model = Participant
-        fields = ["id", "last_name", "first_name", "father_name", "region", "city", "code_for_link",
+        fields = ["id", "last_name", "first_name", "father_name", "region", "city",
                   "chosen_topic", "group_number", "order_number"]
 
 class JudgeSerializer(serializers.ModelSerializer):

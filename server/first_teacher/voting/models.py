@@ -7,17 +7,16 @@ class Participant(models.Model):
     father_name = models.CharField(max_length=30, blank=True)
     region = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255, blank=True)
-    code_for_link = models.CharField(max_length=10, blank=True, unique=True)
-    participant_id = models.SmallIntegerField(blank=True, unique=True)
-    previous_score = models.SmallIntegerField(blank=True)
+    previous_score = models.DecimalField(max_digits=5, decimal_places=2, blank=True)
     chosen_topic = models.CharField(max_length=255, blank=True)
     group_number = models.SmallIntegerField(blank=True, default=0)
     order_number = models.SmallIntegerField(blank=True, default=0)
     final_1tour_score = models.SmallIntegerField(blank=True, default=0)
-    is_final = models.BooleanField(blank=True, default=False)
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name[:1]}'
+        return f'{self.last_name} {self.first_name[:1]} {self.father_name[:1]} ' \
+               f'- GroupNumber: {self.group_number} - OrderNumber: {self.order_number} ' \
+               f'- Final_1tour_score: {self.final_1tour_score};'
 
 
 class Judge(models.Model):
@@ -28,28 +27,35 @@ class Judge(models.Model):
     group_number = models.SmallIntegerField(blank=True, default=0)
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name[:1]}'
+        return f'{self.last_name} {self.first_name[:1]} {self.father_name[:1]} ' \
+               f'- CodeForLink: {self.code_for_link} - GroupNumber: {self.group_number}'
+
+
+class Criteria(models.Model):
+    tour = models.SmallIntegerField(blank=True, default=1)
+    description = models.CharField(max_length=255, blank=True, unique=True)
+
+    def __str__(self):
+        return f'{self.pk} - {self.tour} - {self.description}'
 
 
 class Voting(models.Model):
-    personal_judge_code = models.ForeignKey(
+    judge = models.ForeignKey(
         Judge,
-        to_field='code_for_link',
-        blank=True,
+        # to_field='last_name',
         on_delete=models.CASCADE,
     )
-    personal_participant_code = models.ForeignKey(
+    participant = models.ForeignKey(
         Participant,
-        to_field='code_for_link',
-        blank=True,
+        # to_field='last_name',
         on_delete=models.CASCADE,
     )
-    score_1tour_1criteria = models.SmallIntegerField(blank=True, default=0)
-    score_1tour_2criteria = models.SmallIntegerField(blank=True, default=0)
-    score_1tour_3criteria = models.SmallIntegerField(blank=True, default=0)
-    score_1tour_4criteria = models.SmallIntegerField(blank=True, default=0)
-    score_1tour_5criteria = models.SmallIntegerField(blank=True, default=0)
-
+    criteria = models.ForeignKey(
+        Criteria,
+        to_field='description',
+        on_delete=models.CASCADE,
+    )
+    score = models.SmallIntegerField(blank=True, default=0)
 
     def __str__(self):
-        return f'{self.last_name} {self.first_name[:1]}'
+        return f'{self.judge} - {self.participant} - {self.criteria} - {self.score}'
