@@ -7,16 +7,16 @@ window.onload = function () { // можно также использовать 
     //     console.log("button21", button21);
     // };
     // putAttribute();
-    
+
 };
 
 
 
 
 
-// criteria11.oninput = function () {
-//     valueCriteria11.innerHTML = criteria11.value;
-//     result1.innerHTML = getResult1();
+// criteria_21_1.oninput = function () {
+//     valueCriteria_21_1.innerHTML = criteria_21_1.value;
+//     // result1.innerHTML = getResult1();
 // };
 
 // criteria12.oninput = function () {

@@ -24,9 +24,10 @@
         <!-- Участник № 1 -->
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button :id="'button'+ participant.id" class="accordion-button collapsed" type="button" 
-                data-bs-toggle="collapse" aria-expanded="false">
-                    <p>{{ participant.last_name }} {{ participant.first_name }} {{ participant.father_name }}
+                <button :id="'button'+ participant.id" class="accordion-button collapsed" type="button"
+                    data-bs-toggle="collapse" aria-expanded="false">
+                    <p>{{ participant.order_number }} - {{ participant.last_name }} {{ participant.first_name }} {{
+                        participant.father_name }}
                         <br>{{ participant.region }}, {{ participant.city }}
                         <br>Тема урока: {{ participant.chosen_topic }}
                         <br>Итоговый балл: <span :id="'result' + participant.id"></span>
@@ -38,21 +39,22 @@
                 data-bs-parent="#accordionFlush">
                 <!-- Критерии оценивания -->
                 <div class="accordion-body" id="criterias">
-                    <p>Суммарный балл: <span :id="'pre-result' + participant.id">0</span></p>
+                    <p>Суммарный балл: <span :id="'pre_result_' + participant.id">0</span></p>
                     <div v-for="criteria in criterias">
                         <div class="row">
                             <div class="col-8">
                                 <p>{{ criteria.description }}</p>
                             </div>
                             <div class="col">
-                                <p class="criteriaValue">5</p>
+                                <p class="criteriaValue"
+                                    :id="'valueCriteria' + '_' + participant.id + '_' + criteria.id">10</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col">
                                 <div class="container">
                                     <input type="range" class="form-range" min="0" max="10" step="1"
-                                        :id="'criteria' + '-' + participant.id + '-' + criteria.id">
+                                        :id="'criteria' + '_' + participant.id + '_' + criteria.id">
                                 </div>
                             </div>
                         </div>
