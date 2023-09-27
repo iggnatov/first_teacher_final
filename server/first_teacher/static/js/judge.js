@@ -57,16 +57,26 @@ var judgeApp = new Vue({
                                             }
                                         };
                                         putValue();
-                                        
-                                        
+
+
                                     });
 
 
                             })
                     },
-                    updated: function() {
+                    updated: function () {
+                        let buttons = [];
                         for (let i = 0; i < 30; i++) {
-                            
+                            need_id_string = "button" + i;
+                            console.log(need_id_string);
+                            if (document.getElementById(need_id_string) !== null) {
+                                buttons[i] = document.getElementById(need_id_string);
+                                console.log(need_id_string, buttons[i]);
+                                flush_collapse_string = "#flush-collapse" + i;
+                                buttons[i].setAttribute("data-bs-target", flush_collapse_string);
+                                buttons[i].setAttribute("aria-controls", flush_collapse_string);
+                            };
+
                             // var button21 = document.getElementById("button21");
                             // console.log("button21", button21);
                             // button21.setAttribute("data-bs-target", "#flush-collapse21");
@@ -74,10 +84,10 @@ var judgeApp = new Vue({
                         }
                     }
                 });
-                
+
             })
     },
-    
+
 
 });
 
