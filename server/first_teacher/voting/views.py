@@ -67,6 +67,7 @@ class SetAdminVotesView(APIView):
                     p = participants.get(pk=participant.pk)
                     Voting.objects.create(judge=j, participant=p, score=0)
 
+
         start_score = Voting.objects.all()
         serializer = VotingSerializer(start_score, many=True)
         return Response(serializer.data)

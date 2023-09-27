@@ -48,6 +48,7 @@ var judgeApp = new Vue({
                                         function putValue() {
                                             for (let i = 0; i < 15; i++) {
                                                 let elem = document.getElementById('result' + vp.participants[i].id);
+                                                // console.log('elem', elem);
                                                 for (let j = 0; j < 15; j++) {
                                                     if (vp.participants[i].id == vp.scores[i].participant) {
                                                         elem.innerHTML = vp.scores[i].score;
@@ -56,15 +57,31 @@ var judgeApp = new Vue({
                                             }
                                         };
                                         putValue();
+                                        
+                                        
                                     });
 
 
                             })
+                    },
+                    updated: function() {
+                        for (let i = 0; i < 30; i++) {
+                            
+                            // var button21 = document.getElementById("button21");
+                            // console.log("button21", button21);
+                            // button21.setAttribute("data-bs-target", "#flush-collapse21");
+                            // button21.setAttribute("aria-controls", "#flush-collapse21");
+                        }
                     }
                 });
+                
             })
-    }
+    },
+    
+
 });
+
+
 
 
 

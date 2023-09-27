@@ -24,8 +24,8 @@
         <!-- Участник № 1 -->
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#flush-collapse21" aria-expanded="false" aria-controls="#flush-collapse21">
+                <button :id="'button'+ participant.id" class="accordion-button collapsed" type="button" 
+                data-bs-toggle="collapse" aria-expanded="false">
                     <p>{{ participant.last_name }} {{ participant.first_name }} {{ participant.father_name }}
                         <br>{{ participant.region }}, {{ participant.city }}
                         <br>Тема урока: {{ participant.chosen_topic }}

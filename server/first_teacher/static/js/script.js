@@ -1,3 +1,19 @@
+
+
+window.onload = function () { // можно также использовать window.addEventListener('load', (event) => {
+    alert('Страница загружена');
+    // function putAttribute() {
+    //     var button21 = document.getElementById("button21");
+    //     console.log("button21", button21);
+    // };
+    // putAttribute();
+    
+};
+
+
+
+
+
 // criteria11.oninput = function () {
 //     valueCriteria11.innerHTML = criteria11.value;
 //     result1.innerHTML = getResult1();
