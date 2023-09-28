@@ -11,6 +11,10 @@ window.onload = function () { // можно также использовать 
 };
 
 
+// document.onDOMContentLoaded = function () {
+//     alert('DOM построен');
+// };
+
 
 
 
