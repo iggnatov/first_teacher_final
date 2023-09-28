@@ -1,4 +1,5 @@
 let groupNumber = 0;
+const personal = document.location.search.substring(1);
 
 function getResult1() {
     return Number(criteria_1_1.value) + Number(criteria_1_2.value) + Number(criteria_1_3.value) + Number(criteria_1_4.value) + Number(criteria_1_5.value);
@@ -379,7 +380,29 @@ function change_value() {
     };
 };
 
+function save_data() {
+    let rid = String(this.id).replace('save_button_', '');
+    let res = "pre_result_" + rid;
 
+    if (document.getElementById(res) !== null) {
+        let score = document.getElementById(res).innerHTML;
+        jid = personal.replace('jid=', '');
+        console.log(this.id, rid, res, 'hello', score);
+        axios.get('/set_score?' + 'jid=' + jid + '&rid=' + rid + '&score=' + score)
+            .then(function (response) {
+                console.log('hello_response', response.data);
+
+                let new_value = response.data.score;
+                console.log('new_value', new_value);
+                if (document.getElementById('result' + rid) !== null) {
+                    document.getElementById('result' + rid).innerHTML = new_value;
+                };
+
+
+            });
+    };
+
+};
 
 var judgeApp = new Vue({
     el: '#judgedata',
@@ -388,7 +411,7 @@ var judgeApp = new Vue({
     },
     created: function () {
         const vm = this;
-        const personal = document.location.search.substring(1);
+        //const personal = document.location.search.substring(1);
         console.log(personal);
         axios.get('~/judge?' + personal)
             .then(function (response) {
@@ -472,9 +495,15 @@ var judgeApp = new Vue({
                         //     return Number(criteria_21_1.value) + Number(criteria_21_2.value);
                         // };
                         // let ranges = [];
+                        let save_buttons = [];
                         for (let i = 0; i < 31; i++) {
                             let ranges_criterias = [];
                             let pre_results = [];
+
+
+
+
+
                             // let ranges_value_criterias = [];
 
                             // function getResult() {
@@ -483,9 +512,17 @@ var judgeApp = new Vue({
                             let criteria_sum = 0;
                             need_preresult_value = "pre_result_" + i;
                             if (document.getElementById(need_preresult_value) !== null) {
+
+                                // get button id
+                                my_button_id = "save_button_" + i;
+                                // console.log('my_button_id', my_button_id);
+                                save_buttons[i] = document.getElementById(my_button_id);
+                                // console.log(save_buttons[i]);
+
                                 // console.log('need_preresult_value', need_preresult_value);
                                 pre_results[i] = document.getElementById(need_preresult_value);
-                                console.log(pre_results[i]);
+                                // console.log(pre_results[i]);
+                                save_buttons[i].addEventListener("click", save_data);
                             };
 
                             // criteria_ranges = [];

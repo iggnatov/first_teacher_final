@@ -45,6 +45,32 @@ class VotingView(APIView):
         return Response(serializer.data)
 
 
+class ScoreView(APIView):
+    def get(self, request):
+        jid = request.query_params['jid']
+        rid = request.query_params['rid']
+        score = request.query_params['score']
+        j = Judge.objects.get(code_for_link=jid)
+        print(j, jid, rid, score)
+
+        current_voting = Voting.objects.filter(judge=j).filter(participant=int(rid))
+        print(current_voting[0])
+        gi = current_voting[0].id
+        di = Voting.objects.get(pk=gi)
+        di.score = score
+        di.save()
+        print(di)
+        print(current_voting[0])
+        print(current_voting)
+        # serializer = VotingSerializer(votings, many=True)
+
+        response = {
+            'jid': jid,
+            'rid': rid,
+            'score': score
+        }
+        return Response(response)
+
 # admin views
 
 

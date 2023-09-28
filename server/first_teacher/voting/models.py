@@ -58,4 +58,4 @@ class Voting(models.Model):
     score = models.SmallIntegerField(blank=True, default=0)
 
     def __str__(self):
-        return f'{self.judge} - {self.participant} - {self.score}'
+        return f'{self.judge} - {self.participant} - score: {self.score}'

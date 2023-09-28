@@ -1,14 +1,14 @@
 
 
-window.onload = function () { // можно также использовать window.addEventListener('load', (event) => {
-    alert('Страница загружена');
-    // function putAttribute() {
-    //     var button21 = document.getElementById("button21");
-    //     console.log("button21", button21);
-    // };
-    // putAttribute();
+// window.onload = function () { // можно также использовать window.addEventListener('load', (event) => {
+//     alert('Страница загружена');
+//     // function putAttribute() {
+//     //     var button21 = document.getElementById("button21");
+//     //     console.log("button21", button21);
+//     // };
+//     // putAttribute();
 
-};
+// };
 
 
 // document.onDOMContentLoaded = function () {
